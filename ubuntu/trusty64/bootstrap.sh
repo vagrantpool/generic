@@ -24,7 +24,3 @@ deb http://mirrors.aliyun.com/ubuntu/ trusty-security multiverse
 deb-src http://mirrors.aliyun.com/ubuntu/ trusty-security multiverse
 EOF
 apt-get update
-
-# Prepare the editor:
-cp /vagrant/bootstrap/vimrc $HOME/.vimrc
-cp /vagrant/bootstrap/vimrc /home/vagrant/.vimrc
