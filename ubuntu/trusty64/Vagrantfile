@@ -48,7 +48,7 @@ Vagrant.configure(2) do |config|
     vbox.gui = false
 
     # Customize the amount of memory on the VM:
-    vbox.memory = "1024"
+    vbox.memory = "256"
     vbox.name = "generic-ubuntu-trusty64"
     vbox.cpus = 2
   end
