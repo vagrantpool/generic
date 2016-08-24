@@ -23,9 +23,9 @@ echo 'nameserver 119.29.29.29' > /etc/resolvconf/resolv.conf.d/base
 apt-get update
 
 timedatectl set-timezone 'Asia/Shanghai'
-apt-get -y install ntpdate
+apt-get -y install ntp ntpdate
+service ntp stop
 ntpdate pool.ntp.org
-apt-get -y install ntp
 service ntp start
 
 hostnamectl set-hostname "$hostname.localdomain"
