@@ -17,10 +17,10 @@ Vagrant.configure(2) do |config|
     node00.vm.network "private_network", ip: ipaddr
     #node00.vm.synced_folder "../data", "/vagrant_data"
     node00.vm.provider "virtualbox" do |vbox|
-      vb.cpus = 2
-      vb.gui = false
-      vb.memory = "256"
-      vb.name = vbname
+      vbox.cpus = 2
+      vbox.gui = false
+      vbox.memory = "256"
+      vbox.name = vbname
     end
     node00.vm.provision "bootstrap", type: "shell" do |prv|
       prv.path = "bootstrap.sh"
