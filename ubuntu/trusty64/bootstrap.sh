@@ -17,9 +17,10 @@ deb-src http://mirrors.ustc.edu.cn/ubuntu trusty-updates main restricted univers
 deb-src http://mirrors.ustc.edu.cn/ubuntu trusty-proposed main restricted universe multiverse
 deb-src http://mirrors.ustc.edu.cn/ubuntu trusty-backports main restricted universe multiverse
 EOF
-apt-get update
 
 echo 'nameserver 119.29.29.29' > /etc/resolvconf/resolv.conf.d/base
+
+apt-get update
 
 timedatectl set-timezone 'Asia/Shanghai'
 apt-get -y install ntpdate
