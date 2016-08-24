@@ -5,7 +5,7 @@ hostname=$1
 ipaddr=$2
 
 # Setup system-wide mirror for package-managing.
-cat > /etc/apt/sources.list << EOF
+cat > /etc/apt/sources.list <<-'EOF'
 deb http://mirrors.ustc.edu.cn/ubuntu trusty main restricted universe multiverse
 deb http://mirrors.ustc.edu.cn/ubuntu trusty-security main restricted universe multiverse
 deb http://mirrors.ustc.edu.cn/ubuntu trusty-updates main restricted universe multiverse
