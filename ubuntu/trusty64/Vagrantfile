@@ -7,7 +7,7 @@ Vagrant.configure(2) do |config|
 
   vbprefix = "generic-node-"
   hostprefix = "generic"
-  ipprefix = "192.168.137.1"
+  ipprefix = "192.168.1.1"
 
   config.vm.define "node00" do |node00|
     suffix = "00"
