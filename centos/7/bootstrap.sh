@@ -39,7 +39,7 @@ timedatectl set-timezone 'Asia/Shanghai'
 hostnamectl set-hostname "$hostname.localdomain"
 echo "$ipaddr	$hostname.localdomain	$hostname" >> /etc/hosts
 
-adduser benchmark
-echo 'benchmark:benchmark' | chpasswd
-usermod -aG wheel benchmark
-echo 'benchmark ALL=(ALL) NOPASSWD: ALL' > /etc/sudoers.d/benchmark
+adduser example
+echo 'example:example' | chpasswd
+usermod -aG wheel example
+echo 'example ALL=(ALL) NOPASSWD: ALL' > /etc/sudoers.d/example
