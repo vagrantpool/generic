@@ -18,6 +18,7 @@ deb-src http://mirrors.ustc.edu.cn/ubuntu trusty-proposed main restricted univer
 deb-src http://mirrors.ustc.edu.cn/ubuntu trusty-backports main restricted universe multiverse
 EOF
 
+echo 'nameserver 119.29.29.29' > /etc/resolv.conf
 echo 'nameserver 119.29.29.29' > /etc/resolvconf/resolv.conf.d/base
 
 apt-get update
