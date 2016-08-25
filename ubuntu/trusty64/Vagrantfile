@@ -5,17 +5,16 @@ Vagrant.configure(2) do |config|
   config.vm.box = "ubuntu/trusty64"
   config.vm.box_check_update = false
 
-  vbprefix = "generic-node-"
-  hostprefix = "generic"
+  vbprefix = "generic-ubuntu-trusty64-"
+  hostprefix = "generic-ubuntu-trusty64-"
   ipprefix = "192.168.1.1"
 
-  config.vm.define "node00" do |node00|
+  config.vm.define "generic-ubuntu-trusty64-00" do |node00|
     suffix = "00"
     vbname = vbprefix + suffix
     hostname = hostprefix + suffix
     ipaddr = ipprefix + suffix
     node00.vm.network "private_network", ip: ipaddr
-    #node00.vm.synced_folder "../data", "/vagrant_data"
     node00.vm.provider "virtualbox" do |vbox|
       vbox.cpus = 2
       vbox.gui = false
