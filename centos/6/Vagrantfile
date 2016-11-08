@@ -1,0 +1,33 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure(2) do |config|
+  config.vm.box = "centos/6"
+  config.vm.box_check_update = false
+
+  vbprefix = "generic-centos-6-"
+  hostprefix = "generic-centos-6-"
+  ipprefix = "192.168.2.1"
+
+  config.vm.define "generic-centos-6-00" do |node00|
+    suffix = "00"
+    vbname = vbprefix + suffix
+    hostname = hostprefix + suffix
+    ipaddr = ipprefix + suffix
+    node00.vm.network "private_network", ip: ipaddr
+    node00.vm.provider "virtualbox" do |vbox|
+      vbox.cpus = 2
+      vbox.gui = false
+      vbox.memory = "256"
+      vbox.name = vbname
+    end
+    node00.vm.provision "bootstrap", type: "shell" do |prv|
+      prv.path = "bootstrap.sh"
+      prv.args = [hostname, ipaddr]
+    end
+  end
+
+  config.vm.provision "increase-swap", type: "shell" do |prv|
+    prv.path = "increase-swap.sh"
+  end
+end
