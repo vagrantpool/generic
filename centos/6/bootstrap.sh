@@ -1,10 +1,10 @@
 #!/bin/sh
 
 # Get hostname and IP from command-line args.
-hostname=$1
-ipaddr=$2
+HOSTNAME=$1
+IPADDR=$2
 
-NEWUSER=example
+USER=example
 PASSWD=example
 
 # Setting system-wide mirror for package-managing.
@@ -37,12 +37,16 @@ EOF
 
 yum -y makecache
 
-timedatectl set-timezone 'Asia/Shanghai'
+ln -sfv /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
-hostnamectl set-hostname "$hostname.localdomain"
-echo "$ipaddr	$hostname.localdomain	$hostname" >> /etc/hosts
+echo "HOSTNAME=$HOSTNAME.localdomain" >> /etc/sysconfig/network
+hostname "$HOSTNAME.localdomain"
+echo "$IPADDR	$HOSTNAME.localdomain	$HOSTNAME" >> /etc/hosts
 
-adduser $NEWUSER
-echo "$NEWUSER:$PASSWD" | chpasswd
-usermod -aG wheel $NEWUSER
-echo "$NEWUSER ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/$NEWUSER
+adduser $USER
+echo "$USER:$PASSWD" | chpasswd
+usermod -aG wheel $USER
+echo "$USER ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/$USER
+
+sed -i '1iPasswordAuthentication yes' /etc/ssh/sshd_config
+service sshd restart
