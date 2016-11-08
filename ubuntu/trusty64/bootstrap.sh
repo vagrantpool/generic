@@ -1,10 +1,10 @@
 #!/bin/sh
 
 # Get hostname and IP from command-line args.
-hostname=$1
-ipaddr=$2
+HOSTNAME=$1
+IPADDR=$2
 
-NEWUSER=example
+USER=example
 PASSWD=example
 
 # Setup system-wide mirror for package-managing.
@@ -29,9 +29,9 @@ service ntp stop
 ntpdate pool.ntp.org
 service ntp start
 
-hostnamectl set-hostname "$hostname.localdomain"
-echo "$ipaddr	$hostname.localdomain	$hostname" >> /etc/hosts
+hostnamectl set-hostname "$HOSTNAME.localdomain"
+echo "$IPADDR	$HOSTNAME.localdomain	$HOSTNAME" >> /etc/hosts
 
-adduser --disabled-password --gecos '' $NEWUSER
-echo "$NEWUSER:$PASSWD" | chpasswd
-echo "$NEWUSER ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/$NEWUSER
+adduser --disabled-password --gecos '' $USER
+echo "$USER:$PASSWD" | chpasswd
+echo "$USER ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/$USER
