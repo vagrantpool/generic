@@ -4,6 +4,9 @@
 hostname=$1
 ipaddr=$2
 
+NEWUSER=example
+PASSWD=example
+
 # Setup system-wide mirror for package-managing.
 cat > /etc/apt/sources.list <<-'EOF'
 deb http://mirrors.ustc.edu.cn/ubuntu trusty main restricted universe multiverse
@@ -29,6 +32,6 @@ service ntp start
 hostnamectl set-hostname "$hostname.localdomain"
 echo "$ipaddr	$hostname.localdomain	$hostname" >> /etc/hosts
 
-adduser --disabled-password --gecos '' example
-echo 'example:example' | chpasswd
-echo 'example ALL=(ALL) NOPASSWD:ALL' > /etc/sudoers.d/example
+adduser --disabled-password --gecos '' $NEWUSER
+echo "$NEWUSER:$PASSWD" | chpasswd
+echo "$NEWUSER ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/$NEWUSER

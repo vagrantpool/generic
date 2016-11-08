@@ -4,6 +4,9 @@
 hostname=$1
 ipaddr=$2
 
+NEWUSER=example
+PASSWD=example
+
 # Setting system-wide mirror for package-managing.
 tee /etc/yum.repos.d/CentOS-Base.repo <<-'EOF'
 [base]
@@ -39,7 +42,7 @@ timedatectl set-timezone 'Asia/Shanghai'
 hostnamectl set-hostname "$hostname.localdomain"
 echo "$ipaddr	$hostname.localdomain	$hostname" >> /etc/hosts
 
-adduser example
-echo 'example:example' | chpasswd
-usermod -aG wheel example
-echo 'example ALL=(ALL) NOPASSWD: ALL' > /etc/sudoers.d/example
+adduser $NEWUSER
+echo "$NEWUSER:$PASSWD" | chpasswd
+usermod -aG wheel $NEWUSER
+echo "$NEWUSER ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/$NEWUSER
