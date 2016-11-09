@@ -16,7 +16,7 @@ Vagrant.configure(2) do |config|
     ipaddr = ipprefix + suffix
     node00.vm.network "private_network", ip: ipaddr
     node00.vm.provider "virtualbox" do |vbox|
-      vbox.cpus = 2
+      vbox.cpus = 1
       vbox.gui = false
       vbox.memory = "256"
       vbox.name = vbname
