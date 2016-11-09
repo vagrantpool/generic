@@ -4,7 +4,7 @@
 SWAPSIZE=2000
 
 # Does the swap file already exist?
-grep -q 'swapfile' /etc/fstab
+grep -q 'swap' /etc/fstab
 
 # If not then create it:
 if [ $? -ne 0 ]; then
